@@ -14,7 +14,9 @@ It supports the following transaction types:
 The output CSV includes important details such as transaction hash, timestamp, sender and recipient addresses,
 transaction type, token information, transferred amount, and gas fees (in ETH).
 
-## Prerequisites
+## Build and Execution
+
+### Prerequisites
 
 * Install [SDKMan](https://sdkman.io) (tool to manage Java & Maven)
   ```shell
@@ -40,26 +42,27 @@ transaction type, token information, transferred amount, and gas fees (in ETH).
   * Click `+ Add` to generate a new key (you can name it anything, e.g., `tx-exporter`).
   * Copy the generated API key as you'll need it when running the script.
 
+### Build
 
-## Build and Execution
+Build the `.jar` using Maven:
+```shell
+mvn clean package
+```
 
-* Build the `.jar` using Maven:
-  ```shell
-  mvn clean package
-  ```
-  This will generate a file like `target/crypto-tx-exporter-1.0-SNAPSHOT.jar`
+This will generate a file like `target/crypto-tx-exporter-1.0-SNAPSHOT.jar`
 
-* Run the Exporter:
-  ```shell
-  java -jar target/crypto-tx-exporter-1.0-SNAPSHOT.jar \
-  YOUR_ETHERSCAN_API_KEY \
-  0xFB50526f49894B78541B776F5aaefE43e3Bd8590 \
-  ./samples/transactions_sample.csv
-  ```
-  Arguments:
-  * `etherscan_api_key`: Your API key from etherscan.io.
-  * `wallet_address`: Ethereum address to export transactions from.
-  * `output_csv_path`: Path to the file where transactions will be saved.
+### Run the Exporter
+
+```shell
+java -jar target/crypto-tx-exporter-1.0-SNAPSHOT.jar \
+YOUR_ETHERSCAN_API_KEY \
+0xFB50526f49894B78541B776F5aaefE43e3Bd8590 \
+./samples/transactions_sample.csv
+```
+Arguments:
+* `etherscan_api_key`: Your API key from etherscan.io.
+* `wallet_address`: Ethereum address to export transactions from.
+* `output_csv_path`: Path to the file where transactions will be saved.
 
 ## Sample Output
 
