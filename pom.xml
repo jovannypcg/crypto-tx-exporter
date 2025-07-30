@@ -10,7 +10,9 @@
 
     <properties>
         <assertj.version>3.27.3</assertj.version>
+        <jackson.version>2.19.2</jackson.version>
         <kotlin.coroutines.version>1.10.2</kotlin.coroutines.version>
+        <okhttp.version>4.12.0</okhttp.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
@@ -26,6 +28,26 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version> <!-- or latest stable version -->
+        </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-coroutines-core</artifactId>
@@ -95,6 +117,9 @@
                 </executions>
                 <configuration>
                     <jvmTarget>${kotlin.compiler.jvmTarget}</jvmTarget>
+                    <args>
+                        <arg>-Xannotation-default-target=param-property</arg>
+                    </args>
                 </configuration>
             </plugin>
             <plugin>
