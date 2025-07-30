@@ -18,10 +18,10 @@ suspend fun main(args: Array<String>) {
         return
     }
 
-    val apiKey = args[0]
-    val walletAddress = args[1]
-    val outputPath = args[2]
+    runExport(args[0], args[1], args[2])
+}
 
+suspend fun runExport(apiKey: String, walletAddress: String, outputPath: String) {
     val transactionClient: TransactionClient = EtherscanClient(apiKey, httpClient)
 
     val transactions = transactionClient

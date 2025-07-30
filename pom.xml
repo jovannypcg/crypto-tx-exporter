@@ -12,6 +12,7 @@
         <assertj.version>3.27.3</assertj.version>
         <jackson.version>2.19.2</jackson.version>
         <kotlin.coroutines.version>1.10.2</kotlin.coroutines.version>
+        <mockwebserver.version>4.12.0</mockwebserver.version>
         <okhttp.version>4.12.0</okhttp.version>
         <opencsv.version>5.12.0</opencsv.version>
 
@@ -60,6 +61,12 @@
             <version>${kotlin.coroutines.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>mockwebserver</artifactId>
+            <version>${mockwebserver.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>

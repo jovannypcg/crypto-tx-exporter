@@ -41,6 +41,8 @@ data class Transaction(
     @JsonProperty("txreceipt_status")
     val txReceiptStatus: String?,
 ) {
+    val weiToEth = BigDecimal("1000000000000000000")
+
     fun toInternal(
         transactionType: TransactionType
     ): InternalTransaction = InternalTransaction(
@@ -52,7 +54,7 @@ data class Transaction(
         assetContractAddress = contractAddress,
         assetSymbolOrName = tokenSymbol,
         tokenId = tokenId,
-        amount = BigDecimal.valueOf(value),
+        amount = BigDecimal.valueOf(value).divide(weiToEth),
         gasFeeEth = calculateGasFee(gasUsed, gasPrice)
     )
 
@@ -61,7 +63,6 @@ data class Transaction(
         val weiPrice = BigDecimal(gasPrice)
 
         val totalGasInWei = weiUsed.multiply(weiPrice)
-        val weiToEth = BigDecimal("1000000000000000000")
 
         return totalGasInWei.divide(weiToEth)
     }

@@ -9,7 +9,7 @@ import okhttp3.Request
 import java.net.URLEncoder
 import com.jovannypcg.cryptotxexporter.model.Transaction as InternalTransaction
 
-private val transactionTypeToActionMap = mapOf(
+val transactionTypeToActionMap = mapOf(
     TransactionType.ETH_TRANSFER to "txlist",
     TransactionType.INTERNAL_TRANSFER to "txlistinternal",
     TransactionType.ERC20_TRANSFER to "tokentx",
@@ -17,7 +17,7 @@ private val transactionTypeToActionMap = mapOf(
     TransactionType.ERC1155_TRANSFER to "token1155tx",
 )
 
-class EtherscanClient(
+open class EtherscanClient(
     private val apiKey: String,
     private val client: OkHttpClient
 ) : TransactionClient {
@@ -60,7 +60,7 @@ class EtherscanClient(
         return txs
     }
 
-    private fun buildUrl(address: String, actionType: String): String {
+    open fun buildUrl(address: String, actionType: String): String {
         val encoded = URLEncoder.encode(address, "UTF-8")
         return "https://api.etherscan.io/api" +
                 "?module=account" +
